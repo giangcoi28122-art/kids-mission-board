@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Góc Học Tập Của Con - Bảng Nhiệm Vụ Hàng Ngày</title>
+  <title>Góc Học Tập Của Thùy Lâm - Bảng Nhiệm Vụ Hàng Ngày</title>
   
-  <!-- Google Fonts: Baloo 2 cho trẻ em, Quicksand & Inter cho độ nét cao -->
+  <!-- Google Fonts: Quicksand (mềm mại, đáng yêu), Plus Jakarta Sans (hiện đại, tinh tế) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -20,9 +20,18 @@
       theme: {
         extend: {
           fontFamily: {
-            kid: ['"Baloo 2"', 'cursive', 'sans-serif'],
-            body: ['Quicksand', 'sans-serif'],
-            modern: ['Inter', 'sans-serif']
+            display: ['Quicksand', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          colors: {
+            aesthetic: {
+              blush: '#fff1f2',
+              rose: '#fb7185',
+              lavender: '#8b5cf6',
+              peach: '#fdba74',
+              sage: '#10b981',
+              dark: '#334155'
+            }
           }
         }
       }
@@ -38,155 +47,132 @@
   <style>
     [v-cloak] { display: none; }
     
+    /* Checkbox thẩm mỹ mềm mại */
     .task-checkbox:checked {
-      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e');
     }
 
     @media print {
       header, .no-print { display: none !important; }
       body { background: white !important; }
-      .print-shadow-none { box-shadow: none !important; border: 1px solid #ccc !important; }
+      .print-clean { box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-indigo-50/80 via-purple-50/70 to-pink-50/80 min-h-screen text-slate-800 font-body antialiased pb-12">
-  <div id="app" v-cloak class="max-w-5xl mx-auto px-3 sm:px-6 py-3 sm:py-6">
+<body class="bg-[#faf7f5] text-slate-700 font-sans antialiased min-h-screen pb-14 selection:bg-rose-100 selection:text-rose-700">
+  <div id="app" v-cloak class="max-w-4xl mx-auto px-4 py-4 md:py-7">
 
     <!-- ================================================================= -->
-    <!-- HEADER: THANH ĐIỀU HƯỚNG VÀ THÔNG BÁO                             -->
+    <!-- HEADER: THANH ĐIỀU HƯỚNG TINH TẾ & GỌN GÀNG                       -->
     <!-- ================================================================= -->
-    <header class="bg-white/85 backdrop-blur-md rounded-2xl p-4 shadow-sm border border-purple-100 mb-5 flex flex-wrap items-center justify-between gap-3 no-print">
+    <header class="bg-white/90 backdrop-blur-md rounded-2xl px-5 py-3.5 shadow-sm border border-rose-100/60 mb-6 flex flex-wrap items-center justify-between gap-3 no-print">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-pink-500 flex items-center justify-center text-white text-2xl shadow-md shadow-purple-200 flex-shrink-0">
-          <i class="fa-solid fa-graduation-cap"></i>
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-400 via-pink-400 to-indigo-400 flex items-center justify-center text-white text-xl shadow-sm shadow-rose-200 flex-shrink-0">
+          <i class="fa-solid fa-sparkles"></i>
         </div>
         <div>
-          <h1 class="font-kid font-bold text-2xl text-purple-900 leading-tight flex items-center gap-2">
-            <span>Góc Học Tập Của Con</span>
-            <span class="text-xs bg-purple-100 text-purple-700 font-normal px-2 py-0.5 rounded-full hidden sm:inline">
-              {{ activeChild.name }}
+          <h1 class="font-display font-bold text-xl md:text-2xl text-slate-800 leading-tight flex items-center gap-2">
+            <span>Góc Học Tập Của Thùy Lâm</span>
+            <span class="text-[11px] font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-full border border-rose-100">
+              Daily Missions
             </span>
           </h1>
-          <p class="text-xs text-slate-500 flex flex-wrap items-center gap-2 mt-0.5">
-            <span><i class="fa-regular fa-calendar-check text-purple-500"></i> {{ currentDateStr }}</span>
-            <span v-if="syncState === 'connected'" class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full text-[11px] font-medium">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Đồng bộ Đám Mây Realtime (Trực tuyến)
+          <p class="text-xs text-slate-400 flex items-center gap-2 mt-0.5">
+            <span><i class="fa-regular fa-calendar-heart text-rose-400"></i> {{ currentDateStr }}</span>
+            <span v-if="syncState === 'connected'" class="inline-flex items-center gap-1 text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full text-[10px] font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> Đồng bộ trực tuyến
             </span>
-            <span v-else-if="syncState === 'syncing'" class="inline-flex items-center gap-1 text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded-full text-[11px] font-medium">
-              <i class="fa-solid fa-rotate text-[10px] animate-spin"></i> Đang đồng bộ...
-            </span>
-            <span v-else class="inline-flex items-center gap-1 text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full text-[11px] font-medium">
-              <span class="w-2 h-2 rounded-full bg-slate-400"></span> Bộ nhớ máy
+            <span v-else-if="syncState === 'syncing'" class="inline-flex items-center gap-1 text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full text-[10px] font-semibold">
+              <i class="fa-solid fa-rotate text-[9px] animate-spin"></i> Đang tải...
             </span>
           </p>
         </div>
       </div>
 
-      <!-- NÚT CHUYỂN CHẾ ĐỘ & CÀI ĐẶT -->
+      <!-- CHUYỂN CHẾ ĐỘ: BẢNG CỦA CON / MẸ GIAO BÀI -->
       <div class="flex items-center gap-2 ml-auto">
-        <!-- Chế độ Con (Mặc định trên PC) -->
+        <!-- Chế độ Thùy Lâm (PC) -->
         <button 
           @click="currentView = 'student'" 
-          :class="currentView === 'student' ? 'bg-purple-600 text-white shadow-md shadow-purple-200' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
-          class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer">
-          <i class="fa-solid fa-book-open"></i>
-          <span>Bảng Của Con</span>
+          :class="currentView === 'student' ? 'bg-rose-500 text-white shadow-sm shadow-rose-200' : 'bg-slate-100/80 text-slate-600 hover:bg-slate-200/70'"
+          class="px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-book-bookmark"></i>
+          <span>Bảng Nhiệm Vụ</span>
         </button>
 
-        <!-- Chế độ Mẹ Giao Bài (Mặc định trên Điện thoại) -->
+        <!-- Chế độ Mẹ Giao Bài (Điện thoại) -->
         <button 
           @click="currentView = 'mom'" 
-          :class="currentView === 'mom' ? 'bg-purple-600 text-white shadow-md shadow-purple-200' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'"
-          class="px-3.5 py-2 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 cursor-pointer">
-          <i class="fa-solid fa-paper-plane"></i>
+          :class="currentView === 'mom' ? 'bg-rose-500 text-white shadow-sm shadow-rose-200' : 'bg-slate-100/80 text-slate-600 hover:bg-slate-200/70'"
+          class="px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition-all flex items-center gap-1.5 cursor-pointer">
+          <i class="fa-solid fa-feather-pointed"></i>
           <span>Mẹ Giao Bài</span>
-          <span v-if="hasUnreadChildNote" class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping" title="Có lời nhắn mới từ con!"></span>
+          <span v-if="hasUnreadChildNote" class="w-2 h-2 rounded-full bg-rose-500 animate-ping" title="Thùy Lâm có gửi lời nhắn"></span>
         </button>
 
         <!-- Nút In bài tập -->
         <button 
           @click="window.print()" 
-          class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-all hidden sm:flex"
-          title="In bảng bài tập ra giấy">
-          <i class="fa-solid fa-print"></i>
+          class="w-9 h-9 rounded-xl bg-slate-100/80 text-slate-500 hover:bg-slate-200/70 flex items-center justify-center transition-all hidden sm:flex cursor-pointer"
+          title="In danh sách bài tập ra giấy">
+          <i class="fa-solid fa-print text-xs"></i>
         </button>
 
-        <!-- Cài Đặt & Kết Nối -->
+        <!-- Cài Đặt -->
         <button 
           @click="showSettingsModal = true" 
-          class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition-all cursor-pointer"
-          title="Cài đặt kết nối & Tên các con">
-          <i class="fa-solid fa-gear"></i>
+          class="w-9 h-9 rounded-xl bg-slate-100/80 text-slate-500 hover:bg-slate-200/70 flex items-center justify-center transition-all cursor-pointer"
+          title="Cài đặt kết nối">
+          <i class="fa-solid fa-gear text-xs"></i>
         </button>
       </div>
     </header>
 
-    <!-- THANH CHỌN HỒ SƠ 2 BÉ (THÙY LÂM / BÉ EM) -->
-    <div class="flex items-center justify-center gap-3 mb-5 no-print">
-      <button 
-        v-for="child in children" 
-        :key="child.id"
-        @click="selectedChildId = child.id"
-        :class="selectedChildId === child.id ? 'ring-2 ring-purple-500 bg-white shadow-md scale-105' : 'bg-white/60 opacity-80 hover:opacity-100'"
-        class="flex items-center gap-3 px-4 sm:px-6 py-2.5 rounded-2xl transition-all duration-200 cursor-pointer">
-        <span class="text-2xl">{{ child.avatar }}</span>
-        <div class="text-left">
-          <div class="font-kid font-bold text-base text-slate-800 leading-none mb-0.5">{{ child.name }}</div>
-          <div class="text-[11px] text-slate-500">{{ child.grade || 'Học sinh' }}</div>
-        </div>
-        <span 
-          v-if="getChildProgress(child.id).total > 0"
-          :class="getChildProgress(child.id).percent === 100 ? 'bg-emerald-100 text-emerald-700' : 'bg-purple-100 text-purple-700'"
-          class="ml-1 text-xs font-bold px-2 py-0.5 rounded-full">
-          {{ getChildProgress(child.id).percent }}%
-        </span>
-      </button>
-    </div>
-
     <!-- ================================================================= -->
-    <!-- VIEW 1: BẢNG NHIỆM VỤ CỦA CON (HIỂN THỊ TRÊN MÁY TÍNH PC)          -->
+    <!-- VIEW 1: BẢNG NHIỆM VỤ CỦA THÙY LÂM (GIAO DIỆN CHÍNH TRÊN PC)      -->
     <!-- ================================================================= -->
-    <main v-if="currentView === 'student'" class="space-y-6">
+    <main v-if="currentView === 'student'" class="space-y-5">
 
-      <!-- BANNER ĐỘNG VIÊN & TIẾN ĐỘ -->
-      <section class="bg-gradient-to-r from-purple-600 via-indigo-600 to-pink-500 rounded-3xl p-5 md:p-6 text-white shadow-xl shadow-purple-200/50 relative overflow-hidden print-shadow-none">
-        <div class="absolute -right-8 -bottom-8 text-white/10 text-9xl pointer-events-none">
-          <i class="fa-solid fa-star"></i>
+      <!-- BANNER TIẾN ĐỘ THẨM MỸ (PASTEL ELEGANT) -->
+      <section class="bg-gradient-to-br from-rose-500/90 via-pink-500/85 to-indigo-500/90 rounded-3xl p-5 md:p-6 text-white shadow-sm border border-rose-200/40 relative overflow-hidden print-clean">
+        <!-- Họa tiết sao nhẹ nhàng -->
+        <div class="absolute -right-6 -bottom-6 text-white/10 text-8xl pointer-events-none">
+          <i class="fa-solid fa-sparkles"></i>
         </div>
 
         <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium mb-2">
-              <span>🌟 Lời dặn yêu thương từ Mẹ Giang</span>
+            <div class="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium mb-2.5">
+              <span>🌸 Lời nhắn từ Mẹ Giang</span>
             </div>
-            <h2 class="font-kid text-2xl md:text-3xl font-extrabold tracking-wide">
-              Chào {{ activeChild.name }}, hãy chinh phục bài tập hôm nay nhé!
+            <h2 class="font-display font-bold text-2xl md:text-3xl tracking-tight leading-snug">
+              Chào Thùy Lâm, chúc con một buổi tối học tập thật tập trung!
             </h2>
-            <p class="text-white/90 text-sm md:text-base mt-1 max-w-xl italic">
-              "{{ activeHomework.momNote || 'Mẹ tin con sẽ hoàn thành thật xuất sắc và tập trung!' }}"
+            <p class="text-white/90 text-sm md:text-base mt-1.5 max-w-xl italic font-light">
+              "{{ homeworkData.momNote || 'Mẹ tin con gái sẽ hoàn thành thật tốt và thong thả tận hưởng buổi tối nhé!' }}"
             </p>
           </div>
 
-          <!-- HUY HIỆU TIẾN ĐỘ -->
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-2xl text-center min-w-[170px] self-start md:self-auto">
-            <div class="text-xs uppercase tracking-wider text-white/80 font-bold mb-1">Mục tiêu trong ngày</div>
-            <div class="font-kid text-3xl md:text-4xl font-black">
+          <!-- HUY HIỆU TIẾN ĐỘ THẨM MỸ -->
+          <div class="bg-white/15 backdrop-blur-md border border-white/20 px-5 py-3.5 rounded-2xl text-center min-w-[160px] self-start md:self-auto flex-shrink-0">
+            <div class="text-[11px] uppercase tracking-wider text-white/80 font-bold mb-0.5">Tiến độ hôm nay</div>
+            <div class="font-display font-black text-3xl">
               {{ currentProgress.completed }}/{{ currentProgress.total }}
-              <span class="text-lg font-normal">việc</span>
+              <span class="text-base font-normal">việc</span>
             </div>
-            <div class="text-xs text-white/90 mt-1 font-semibold">
-              <span v-if="currentProgress.percent === 100">🎉 Tuyệt vời! Đã hoàn thành 100%!</span>
-              <span v-else-if="currentProgress.percent >= 50">🔥 Đã hoàn thành {{ currentProgress.percent }}%, cố lên!</span>
-              <span v-else>💪 Bắt đầu thôi nào!</span>
+            <div class="text-xs text-white/95 mt-1 font-semibold">
+              <span v-if="currentProgress.percent === 100">✨ Hoàn thành xuất sắc 100%!</span>
+              <span v-else-if="currentProgress.percent >= 50">🌷 Đã xong {{ currentProgress.percent }}%, cố lên con!</span>
+              <span v-else>🌱 Cùng bắt đầu thôi nào!</span>
             </div>
           </div>
         </div>
 
-        <!-- THANH TIẾN ĐỘ LỚN -->
+        <!-- THANH TIẾN ĐỘ GRADIENT PASTEL -->
         <div class="mt-5">
-          <div class="w-full bg-black/20 h-4 rounded-full p-0.5 overflow-hidden">
+          <div class="w-full bg-black/15 h-3 rounded-full p-0.5 overflow-hidden">
             <div 
-              class="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-amber-300 via-emerald-300 to-green-400 shadow-sm"
+              class="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-amber-200 via-rose-200 to-emerald-300 shadow-sm"
               :style="{ width: currentProgress.percent + '%' }">
             </div>
           </div>
@@ -194,56 +180,56 @@
       </section>
 
       <!-- DANH SÁCH MÔN HỌC & CHECKLIST BÀI TẬP -->
-      <section v-if="activeHomework.subjects && activeHomework.subjects.length > 0" class="space-y-4">
+      <section v-if="homeworkData.subjects && homeworkData.subjects.length > 0" class="space-y-4">
         <div 
-          v-for="(subj, sIndex) in activeHomework.subjects" 
+          v-for="(subj, sIndex) in homeworkData.subjects" 
           :key="sIndex"
-          class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 hover:shadow-md transition-all">
+          class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/60 hover:border-rose-200/80 transition-all">
           
-          <!-- TIÊU ĐỀ MÔN HỌC -->
-          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+          <!-- TIÊU ĐỀ MÔN HỌC (THEO STYLE PASTEL ELEGANT) -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3.5">
             <div class="flex items-center gap-3">
               <span 
                 :class="getSubjectStyle(subj.name).badgeClass"
-                class="w-11 h-11 rounded-2xl flex items-center justify-center text-xl shadow-sm">
+                class="w-10 h-10 rounded-xl flex items-center justify-center text-base shadow-sm">
                 <i :class="getSubjectStyle(subj.name).icon"></i>
               </span>
               <div>
-                <h3 class="font-kid font-bold text-xl text-slate-800">{{ subj.name }}</h3>
+                <h3 class="font-display font-bold text-lg text-slate-800 leading-tight">{{ subj.name }}</h3>
                 <span class="text-xs text-slate-400">
-                  {{ subj.tasks.filter(t => t.done).length }}/{{ subj.tasks.length }} nhiệm vụ hoàn thành
+                  {{ subj.tasks.filter(t => t.done).length }}/{{ subj.tasks.length }} việc đã hoàn thành
                 </span>
               </div>
             </div>
 
             <span 
               v-if="subj.tasks.every(t => t.done)"
-              class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full flex items-center gap-1.5">
-              <i class="fa-solid fa-circle-check"></i> Đã hoàn thành môn này!
+              class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full flex items-center gap-1.5 border border-emerald-100">
+              <i class="fa-solid fa-circle-check"></i> Đã xong môn này
             </span>
           </div>
 
           <!-- CÁC ĐẦU VIỆC TRONG MÔN -->
-          <div class="space-y-2.5">
+          <div class="space-y-2">
             <div 
               v-for="(task, tIndex) in subj.tasks" 
               :key="tIndex"
               @click="toggleTask(sIndex, tIndex)"
-              :class="task.done ? 'bg-emerald-50/60 border-emerald-100 text-slate-400 line-through' : 'bg-slate-50/70 border-slate-100 text-slate-700 hover:bg-purple-50/40 hover:border-purple-200'"
-              class="group flex items-start gap-3.5 p-3.5 rounded-xl border transition-all cursor-pointer select-none">
+              :class="task.done ? 'bg-slate-50/80 border-slate-100 text-slate-400 line-through' : 'bg-white border-slate-200/70 text-slate-700 hover:border-rose-300 hover:bg-rose-50/20'"
+              class="group flex items-start gap-3.5 p-3 rounded-xl border transition-all cursor-pointer select-none">
               
               <input 
                 type="checkbox" 
                 :checked="task.done"
                 @click.stop="toggleTask(sIndex, tIndex)"
-                class="task-checkbox mt-0.5 w-6 h-6 rounded-lg text-purple-600 focus:ring-purple-400 cursor-pointer transition-all accent-purple-600 flex-shrink-0" />
+                class="task-checkbox mt-0.5 w-5 h-5 rounded-md text-rose-500 focus:ring-rose-300 cursor-pointer transition-all accent-rose-500 flex-shrink-0" />
               
-              <div class="flex-1 text-base md:text-lg font-medium leading-snug">
+              <div class="flex-1 text-sm md:text-base font-medium leading-relaxed">
                 {{ task.content }}
               </div>
 
-              <span v-if="task.done" class="text-emerald-500 text-base font-bold ml-auto flex items-center gap-1">
-                <i class="fa-solid fa-circle-check"></i>
+              <span v-if="task.done" class="text-emerald-500 text-sm font-semibold ml-auto flex items-center gap-1">
+                <i class="fa-solid fa-check"></i>
               </span>
             </div>
           </div>
@@ -251,45 +237,45 @@
       </section>
 
       <!-- KHI CHƯA CÓ BÀI TẬP NÀO -->
-      <section v-else class="bg-white rounded-3xl p-10 text-center shadow-sm border border-slate-100">
-        <div class="w-20 h-20 mx-auto rounded-full bg-purple-50 text-purple-400 flex items-center justify-center text-4xl mb-4">
-          <i class="fa-regular fa-face-smile-wink"></i>
+      <section v-else class="bg-white rounded-3xl p-10 text-center shadow-sm border border-slate-200/60">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-rose-50 text-rose-400 flex items-center justify-center text-3xl mb-3">
+          <i class="fa-regular fa-sun-cloud"></i>
         </div>
-        <h3 class="font-kid text-2xl font-bold text-slate-700">Hôm nay chưa có bài tập nào!</h3>
-        <p class="text-slate-500 text-sm mt-1 max-w-md mx-auto">
-          Mẹ Giang chưa dán bài tập mới cho {{ activeChild.name }}. Con có thể đọc sách, vận động thể thao hoặc nghỉ ngơi nhé!
+        <h3 class="font-display font-bold text-xl text-slate-700">Hôm nay Thùy Lâm chưa có bài tập nào!</h3>
+        <p class="text-slate-400 text-sm mt-1 max-w-sm mx-auto">
+          Mẹ Giang chưa dán bài tập mới từ Zalo. Con có thể đọc cuốn sách yêu thích hoặc nghỉ ngơi nhé!
         </p>
         <button 
           @click="currentView = 'mom'" 
-          class="mt-5 px-5 py-2.5 bg-purple-600 text-white rounded-xl font-semibold text-sm hover:bg-purple-700 transition-all shadow-md shadow-purple-200 cursor-pointer">
+          class="mt-4 px-4 py-2 bg-rose-500 text-white rounded-xl font-semibold text-xs hover:bg-rose-600 transition-all cursor-pointer">
           Mở màn hình dán bài tập của Mẹ
         </button>
       </section>
 
-      <!-- HỘP LỜI NHẮN CON GỬI CHO MẸ (TƯƠNG TÁC 2 CHIỀU) -->
-      <section class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 no-print">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="text-purple-600 text-lg"><i class="fa-solid fa-comment-dots"></i></span>
-          <h3 class="font-kid font-bold text-lg text-slate-800">Gửi lời nhắn cho Mẹ Giang</h3>
+      <!-- HỘP LỜI NHẮN THÙY LÂM GỬI CHO MẸ (TƯƠNG TÁC 2 CHIỀU) -->
+      <section class="bg-white rounded-2xl p-4 md:p-5 shadow-sm border border-slate-200/60 no-print">
+        <div class="flex items-center gap-2 mb-2.5">
+          <span class="text-rose-500 text-base"><i class="fa-solid fa-heart-circle-bolt"></i></span>
+          <h3 class="font-display font-bold text-base text-slate-800">Thùy Lâm gửi lời nhắn cho Mẹ</h3>
         </div>
 
-        <div class="space-y-3">
-          <div v-if="activeHomework.childNote" class="bg-amber-50 border border-amber-200 text-amber-900 p-3.5 rounded-xl text-sm flex items-start justify-between gap-2">
+        <div class="space-y-2.5">
+          <div v-if="homeworkData.childNote" class="bg-rose-50/70 border border-rose-200/60 text-rose-900 p-3 rounded-xl text-sm flex items-start justify-between gap-2">
             <div>
-              <span class="font-bold">Tin nhắn gần nhất gửi mẹ:</span> "{{ activeHomework.childNote }}"
+              <span class="font-semibold text-rose-800">Tin con gửi gần nhất:</span> "{{ homeworkData.childNote }}"
             </div>
-            <span class="text-[11px] text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md font-medium whitespace-nowrap">Đã gửi</span>
+            <span class="text-[10px] text-rose-600 bg-rose-100 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Đã gửi</span>
           </div>
 
           <div class="flex gap-2">
             <input 
               v-model="newChildNote" 
               @keyup.enter="sendChildNote"
-              placeholder="Ví dụ: 'Mẹ ơi bài 3 con chưa hiểu', 'Con đã làm xong hết rồi mẹ nhé'..."
-              class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400" />
+              placeholder="Ví dụ: 'Mẹ ơi bài 2 con chưa hiểu lắm', 'Con hoàn thành hết rồi mẹ nhé'..."
+              class="flex-1 px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
             <button 
               @click="sendChildNote"
-              class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl text-sm font-semibold hover:bg-indigo-700 transition-all flex items-center gap-2 cursor-pointer shadow-sm">
+              class="px-4 py-2 bg-rose-500 text-white rounded-xl text-xs md:text-sm font-semibold hover:bg-rose-600 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm">
               <i class="fa-regular fa-paper-plane"></i> Gửi Mẹ
             </button>
           </div>
@@ -301,52 +287,52 @@
     <!-- ================================================================= -->
     <!-- VIEW 2: MÀN HÌNH CỦA MẸ (DÁN BÀI TẬP ZALO NHANH TRÊN ĐIỆN THOẠI)   -->
     <!-- ================================================================= -->
-    <main v-else-if="currentView === 'mom'" class="space-y-6">
+    <main v-else-if="currentView === 'mom'" class="space-y-5">
 
       <!-- KHUNG NHẬP LIỆU BÀI TẬP ZALO -->
-      <section class="bg-white rounded-3xl p-5 md:p-6 shadow-md border border-purple-100">
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center gap-2">
-            <span class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-base">
-              <i class="fa-solid fa-paste"></i>
+      <section class="bg-white rounded-3xl p-5 md:p-6 shadow-sm border border-rose-100">
+        <div class="flex items-center justify-between mb-3.5">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm">
+              <i class="fa-solid fa-clipboard-check"></i>
             </span>
             <div>
-              <h2 class="font-kid font-bold text-xl text-slate-800 leading-none">Giao bài tập mới từ Zalo</h2>
-              <span class="text-xs text-slate-400">Chỉ cần copy tin nhắn Zalo và dán vào đây</span>
+              <h2 class="font-display font-bold text-lg text-slate-800 leading-none">Giao bài cho Thùy Lâm</h2>
+              <span class="text-xs text-slate-400">Copy tin Zalo cô giáo dặn và dán vào đây</span>
             </div>
           </div>
-          <span class="text-xs text-purple-700 bg-purple-100 px-3 py-1 rounded-full font-bold">
-            Giao cho: {{ activeChild.name }}
+          <span class="text-xs text-rose-600 bg-rose-50 px-2.5 py-1 rounded-full font-bold border border-rose-100">
+            Dành cho Thùy Lâm
           </span>
         </div>
 
         <!-- MẸ CHỌN LỜI ĐỘNG VIÊN NHANH -->
-        <div class="mb-3.5">
-          <label class="block text-xs font-semibold text-slate-600 mb-1.5">Lời nhắn động viên của Mẹ:</label>
+        <div class="mb-3">
+          <label class="block text-xs font-semibold text-slate-600 mb-1">Lời nhắn động viên con gái:</label>
           <div class="flex flex-wrap gap-1.5 mb-2">
             <button 
               v-for="(preset, pIndex) in momNotePresets" 
               :key="pIndex"
               @click="rawMomNote = preset"
-              class="text-xs bg-slate-100 hover:bg-purple-100 text-slate-600 hover:text-purple-700 px-2.5 py-1 rounded-lg transition-all cursor-pointer">
+              class="text-xs bg-slate-100/80 hover:bg-rose-50 text-slate-600 hover:text-rose-700 px-2.5 py-1 rounded-lg transition-all cursor-pointer">
               {{ preset }}
             </button>
           </div>
           <input 
             v-model="rawMomNote" 
             placeholder="Nhập lời nhắn riêng cho con (không bắt buộc)..." 
-            class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400" />
+            class="w-full px-3.5 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300" />
         </div>
 
         <!-- Ô DÁN TIN NHẮN ZALO -->
-        <div class="mb-4">
-          <div class="flex items-center justify-between mb-1.5">
+        <div class="mb-3.5">
+          <div class="flex items-center justify-between mb-1">
             <label class="block text-xs font-semibold text-slate-600">
               Dán nội dung tin nhắn Zalo của cô giáo vào đây:
             </label>
             <button 
               @click="fillSampleData" 
-              class="text-xs text-purple-600 hover:underline cursor-pointer flex items-center gap-1">
+              class="text-xs text-rose-600 hover:underline cursor-pointer flex items-center gap-1">
               <i class="fa-solid fa-wand-magic-sparkles"></i> Dán mẫu thử
             </button>
           </div>
@@ -354,8 +340,8 @@
           <textarea 
             v-model="rawZaloInput" 
             rows="6"
-            placeholder="Ví dụ dán tin Zalo:&#10;BTVN ngày 8/9:&#10;- Toán: Làm bài 1, 2, 3 trang 25 SGK&#10;- Tiếng Việt: Viết đoạn văn ngắn tả cây cối, học thuộc bài thơ&#10;- Tiếng Anh: Làm bài tập Unit 2 trang 14&#10;- Nhớ chuẩn bị bút màu cho tiết Mỹ thuật mai"
-            class="w-full p-3.5 rounded-2xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 font-mono leading-relaxed"></textarea>
+            placeholder="Ví dụ dán tin Zalo:&#10;BTVN ngày 8/9 của Thùy Lâm:&#10;- Toán: Làm bài 1, 2, 3 trang 25 SGK&#10;- Tiếng Việt: Viết đoạn văn ngắn tả cây cối, học thuộc bài thơ&#10;- Tiếng Anh: Làm bài tập Unit 2 trang 14&#10;- Nhớ chuẩn bị bút màu cho tiết Mỹ thuật mai"
+            class="w-full p-3.5 rounded-2xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-rose-300 font-mono leading-relaxed"></textarea>
         </div>
 
         <!-- NÚT GIAO BÀI -->
@@ -363,39 +349,39 @@
           <button 
             @click="parseAndSaveHomework" 
             :disabled="!rawZaloInput.trim()"
-            class="flex-1 py-3 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:opacity-50 text-white rounded-2xl font-kid font-bold text-lg shadow-lg shadow-purple-200 transition-all flex items-center justify-center gap-2 cursor-pointer">
-            <i class="fa-solid fa-circle-check"></i>
-            Tự Động Tách Bài & Giao Cho {{ activeChild.name }}
+            class="flex-1 py-3 px-6 bg-gradient-to-r from-rose-500 to-indigo-500 hover:from-rose-600 hover:to-indigo-600 disabled:opacity-50 text-white rounded-2xl font-display font-bold text-base shadow-sm shadow-rose-200 transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-sparkles"></i>
+            Tự Động Tách Bài & Giao Cho Thùy Lâm
           </button>
         </div>
       </section>
 
       <!-- THEO DÕI TIẾN ĐỘ HIỆN TẠI & LỜI NHẮN TỪ CON -->
-      <section class="bg-white rounded-3xl p-5 md:p-6 shadow-sm border border-slate-100">
-        <div class="flex items-center justify-between mb-4">
-          <h3 class="font-kid font-bold text-lg text-slate-800 flex items-center gap-2">
-            <i class="fa-solid fa-chart-pie text-indigo-500"></i> Tiến độ học tập hiện tại của {{ activeChild.name }}
+      <section class="bg-white rounded-3xl p-5 md:p-6 shadow-sm border border-slate-200/60">
+        <div class="flex items-center justify-between mb-3.5">
+          <h3 class="font-display font-bold text-base text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-chart-simple text-rose-400"></i> Tiến độ hôm nay của Thùy Lâm
           </h3>
-          <span class="text-sm font-bold text-purple-700">
+          <span class="text-sm font-bold text-rose-600">
             {{ currentProgress.completed }}/{{ currentProgress.total }} bài ({{ currentProgress.percent }}%)
           </span>
         </div>
 
         <!-- BÁO CÁO LỜI NHẮN TỪ CON -->
-        <div v-if="activeHomework.childNote" class="bg-purple-50 border border-purple-200 p-4 rounded-2xl mb-4 flex items-start gap-3">
-          <span class="text-2xl">💌</span>
+        <div v-if="homeworkData.childNote" class="bg-rose-50 border border-rose-200 p-3.5 rounded-2xl mb-3.5 flex items-start gap-3">
+          <span class="text-xl">💌</span>
           <div>
-            <div class="text-xs font-bold text-purple-800 uppercase">Lời nhắn con gửi cho mẹ:</div>
-            <div class="text-slate-800 font-medium text-sm mt-0.5">"{{ activeHomework.childNote }}"</div>
+            <div class="text-[11px] font-bold text-rose-700 uppercase">Thùy Lâm nhắn mẹ:</div>
+            <div class="text-slate-800 font-medium text-sm mt-0.5">"{{ homeworkData.childNote }}"</div>
           </div>
         </div>
 
         <!-- DANH SÁCH BÀI TẬP ĐANG GIAO -->
-        <div v-if="activeHomework.subjects && activeHomework.subjects.length > 0" class="space-y-3">
-          <div v-for="(subj, sIdx) in activeHomework.subjects" :key="sIdx" class="border border-slate-100 rounded-xl p-3 bg-slate-50/50">
-            <div class="font-bold text-sm text-slate-700 mb-1.5 flex items-center justify-between">
+        <div v-if="homeworkData.subjects && homeworkData.subjects.length > 0" class="space-y-2.5">
+          <div v-for="(subj, sIdx) in homeworkData.subjects" :key="sIdx" class="border border-slate-100 rounded-xl p-3 bg-slate-50/50">
+            <div class="font-bold text-sm text-slate-700 mb-1 flex items-center justify-between">
               <span>{{ subj.name }}</span>
-              <span class="text-xs font-normal text-slate-500">
+              <span class="text-xs font-normal text-slate-400">
                 {{ subj.tasks.filter(t => t.done).length }}/{{ subj.tasks.length }} đã xong
               </span>
             </div>
@@ -415,76 +401,57 @@
     </main>
 
     <!-- ================================================================= -->
-    <!-- MODAL CÀI ĐẶT & KẾT NỐI ĐÁM MÂY                                  -->
+    <!-- MODAL CÀI ĐẶT & KẾT NỐI                                          -->
     <!-- ================================================================= -->
-    <div v-if="showSettingsModal" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+    <div v-if="showSettingsModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-xl space-y-4">
         <div class="flex items-center justify-between pb-3 border-b border-slate-100">
-          <h3 class="font-kid font-bold text-xl text-slate-800 flex items-center gap-2">
-            <i class="fa-solid fa-sliders text-purple-600"></i> Cài Đặt Gia Đình
+          <h3 class="font-display font-bold text-lg text-slate-800 flex items-center gap-2">
+            <i class="fa-solid fa-sliders text-rose-500"></i> Cài Đặt Kết Nối
           </h3>
           <button @click="showSettingsModal = false" class="text-slate-400 hover:text-slate-600 text-lg cursor-pointer">
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
 
-        <!-- ĐỔI TÊN HAI CON -->
         <div>
-          <label class="block text-xs font-bold text-slate-700 uppercase mb-2">Hồ sơ 2 con:</label>
-          <div class="space-y-2">
-            <div v-for="child in children" :key="child.id" class="flex items-center gap-2">
-              <input v-model="child.avatar" class="w-10 text-center py-1.5 border border-slate-200 rounded-xl text-lg" title="Biểu tượng" />
-              <input v-model="child.name" class="flex-1 px-3 py-1.5 border border-slate-200 rounded-xl text-sm font-semibold" placeholder="Tên bé" />
-              <input v-model="child.grade" class="w-24 px-3 py-1.5 border border-slate-200 rounded-xl text-sm" placeholder="Khối lớp" />
-            </div>
-          </div>
-        </div>
-
-        <!-- MÃ ĐỒNG BỘ ĐÁM MÂY GIA ĐÌNH -->
-        <div class="pt-3 border-t border-slate-100">
           <label class="block text-xs font-bold text-slate-700 uppercase mb-1">
-            Kênh đồng bộ trực tuyến gia đình (Family Sync Channel):
+            Kênh đồng bộ đám mây (Cloud Sync):
           </label>
-          <p class="text-xs text-slate-500 mb-2">
-            Mã định danh riêng của gia đình để Điện thoại và Máy tính tự tìm thấy nhau trên Internet:
+          <p class="text-xs text-slate-400 mb-2">
+            Mã định danh riêng để Điện thoại của Mẹ và PC của Thùy Lâm tự tìm thấy nhau:
           </p>
           <div class="flex gap-2 mb-2">
             <input 
               v-model="familySyncCode" 
               placeholder="giang_thuylam_homework" 
-              class="flex-1 px-3.5 py-2 rounded-xl border border-slate-200 text-sm font-mono focus:ring-2 focus:ring-purple-400 focus:outline-none" />
+              class="flex-1 px-3 py-2 rounded-xl border border-slate-200 text-xs font-mono focus:ring-2 focus:ring-rose-300 focus:outline-none" />
             <button 
               @click="reconnectCloud" 
-              class="px-4 py-2 bg-purple-600 text-white rounded-xl text-xs font-semibold hover:bg-purple-700">
+              class="px-3.5 py-2 bg-rose-500 text-white rounded-xl text-xs font-semibold hover:bg-rose-600">
               Kết Nối Lại
             </button>
           </div>
-          <p class="text-[11px] text-emerald-600 flex items-center gap-1.5">
-            <i class="fa-solid fa-bolt text-amber-500"></i> Kênh kết nối đám mây hoàn toàn tự động, tức thời và miễn phí vĩnh viễn.
-          </p>
         </div>
 
-        <!-- NÚT LƯU & ĐÓNG -->
         <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
           <button 
             @click="resetToDefaultData" 
             class="text-xs text-slate-400 hover:text-rose-500 underline cursor-pointer">
             Đặt lại dữ liệu gốc
           </button>
-          <div class="flex gap-2">
-            <button 
-              @click="saveSyncSettings" 
-              class="px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-sm font-semibold transition-all cursor-pointer">
-              Lưu & Đóng
-            </button>
-          </div>
+          <button 
+            @click="showSettingsModal = false" 
+            class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-semibold transition-all cursor-pointer">
+            Đóng
+          </button>
         </div>
       </div>
     </div>
 
   </div>
 
-  <!-- SCRIPT LOGIC VUE 3, SMART PARSER & CLOUD REALTIME ENGINE -->
+  <!-- SCRIPT LOGIC VUE 3 -->
   <script>
     const { createApp, ref, computed, onMounted } = Vue;
 
@@ -492,34 +459,27 @@
       setup() {
         const isMobileDevice = window.innerWidth < 768;
         const currentView = ref(isMobileDevice ? 'mom' : 'student');
-        
-        // Quản lý 2 con
-        const children = ref([
-          { id: 'child1', name: 'Thùy Lâm', grade: 'Lớp 4', avatar: '👧' },
-          { id: 'child2', name: 'Bé Em', grade: 'Lớp 1', avatar: '👦' }
-        ]);
-        const selectedChildId = ref('child1');
 
-        // Lời nhắn động viên mẫu của Mẹ
+        // Lời nhắn động viên mẫu của Mẹ Giang cho Thùy Lâm
         const momNotePresets = [
-          'Chúc con học tập vui vẻ, tập trung và làm thật tốt nhé!',
-          'Mẹ tin con sẽ hoàn thành xuất sắc các bài tập hôm nay!',
-          'Làm xong sớm để cả nhà mình cùng chơi bóng bàn/chạy bộ nhé!',
-          'Tập trung làm cẩn thận, bài nào khó cứ nhắn lại cho mẹ nha.'
+          'Chúc con gái học tập vui vẻ, tập trung và làm thật tốt nhé!',
+          'Mẹ tin Thùy Lâm sẽ hoàn thành xuất sắc các bài tập hôm nay!',
+          'Làm xong sớm để mẹ con mình cùng thư giãn/tập thể thao nhé!',
+          'Tập trung làm cẩn thận, bài nào chưa hiểu con cứ nhắn lại cho mẹ nha.'
         ];
         const rawMomNote = ref(momNotePresets[0]);
         const rawZaloInput = ref('');
         const newChildNote = ref('');
         const showSettingsModal = ref(false);
         const familySyncCode = ref('giang_thuylam_homework_2026');
-        const syncState = ref('connecting'); // 'connected', 'syncing', 'offline'
+        const syncState = ref('connecting');
 
         let sseConnection = null;
 
-        // BroadcastChannel cho tab cùng máy
+        // BroadcastChannel cho các tab cùng máy tính
         let broadcastChannel = null;
         try {
-          broadcastChannel = new BroadcastChannel('kids_mission_board_channel');
+          broadcastChannel = new BroadcastChannel('thuylam_mission_board_channel');
           broadcastChannel.onmessage = (event) => {
             if (event.data && event.data.type === 'DATA_UPDATED') {
               loadData();
@@ -527,71 +487,33 @@
           };
         } catch (e) {}
 
-        // Dữ liệu bài tập của từng bé
+        // Dữ liệu bài tập của Thùy Lâm
         const homeworkData = ref({
-          child1: {
-            date: new Date().toISOString().slice(0, 10),
-            momNote: 'Chúc Thùy Lâm làm bài tập thật vui vẻ và tập trung nhé!',
-            childNote: '',
-            subjects: [
-              {
-                name: 'Toán',
-                tasks: [
-                  { content: 'Làm bài 1, 2 trang 25 SGK vào vở', done: false },
-                  { content: 'Làm bài 3 trang 26 (ôn tập phân số)', done: false }
-                ]
-              },
-              {
-                name: 'Tiếng Việt',
-                tasks: [
-                  { content: 'Đọc và trả lời câu hỏi bài Tập đọc trang 30', done: false },
-                  { content: 'Viết 4-5 câu tả cảnh mùa thu', done: false }
-                ]
-              },
-              {
-                name: 'Dặn dò chuẩn bị',
-                tasks: [
-                  { content: 'Mang compa và thước kẻ cho tiết học ngày mai', done: false }
-                ]
-              }
-            ]
-          },
-          child2: {
-            date: new Date().toISOString().slice(0, 10),
-            momNote: 'Bé Em nhớ ngồi thẳng lưng và viết chữ thật nắn nót nha!',
-            childNote: '',
-            subjects: [
-              {
-                name: 'Tiếng Việt',
-                tasks: [
-                  { content: 'Viết 2 dòng chữ cái O, Ô trong vở tập viết', done: false },
-                  { content: 'Đọc lại bảng chữ cái bài 5', done: false }
-                ]
-              },
-              {
-                name: 'Toán',
-                tasks: [
-                  { content: 'Đếm que tính và làm bài 1 trang 12', done: false }
-                ]
-              }
-            ]
-          }
-        });
-
-        const activeChild = computed(() => {
-          return children.value.find(c => c.id === selectedChildId.value) || children.value[0];
-        });
-
-        const activeHomework = computed(() => {
-          if (!homeworkData.value[selectedChildId.value]) {
-            homeworkData.value[selectedChildId.value] = {
-              date: new Date().toISOString().slice(0, 10),
-              momNote: '',
-              childNote: '',
-              subjects: []
-            };
-          }
-          return homeworkData.value[selectedChildId.value];
+          date: new Date().toISOString().slice(0, 10),
+          momNote: 'Chúc Thùy Lâm làm bài tập thật vui vẻ và tập trung nhé!',
+          childNote: '',
+          subjects: [
+            {
+              name: 'Toán',
+              tasks: [
+                { content: 'Làm bài 1, 2 trang 25 SGK vào vở', done: false },
+                { content: 'Làm bài 3 trang 26 (ôn tập phân số)', done: false }
+              ]
+            },
+            {
+              name: 'Tiếng Việt',
+              tasks: [
+                { content: 'Đọc và trả lời câu hỏi bài Tập đọc trang 30', done: false },
+                { content: 'Viết 4-5 câu tả cảnh mùa thu', done: false }
+              ]
+            },
+            {
+              name: 'Dặn dò chuẩn bị',
+              tasks: [
+                { content: 'Mang compa và thước kẻ cho tiết học ngày mai', done: false }
+              ]
+            }
+          ]
         });
 
         const currentDateStr = computed(() => {
@@ -604,14 +526,13 @@
           return `${dayName}, ${d}/${m}/${y}`;
         });
 
-        function getChildProgress(childId) {
-          const data = homeworkData.value[childId];
-          if (!data || !data.subjects || data.subjects.length === 0) {
+        const currentProgress = computed(() => {
+          if (!homeworkData.value.subjects || homeworkData.value.subjects.length === 0) {
             return { total: 0, completed: 0, percent: 0 };
           }
           let total = 0;
           let completed = 0;
-          data.subjects.forEach(s => {
+          homeworkData.value.subjects.forEach(s => {
             if (s.tasks) {
               s.tasks.forEach(t => {
                 total++;
@@ -621,32 +542,31 @@
           });
           const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
           return { total, completed, percent };
-        }
-
-        const currentProgress = computed(() => getChildProgress(selectedChildId.value));
-
-        const hasUnreadChildNote = computed(() => {
-          return !!(activeHomework.value && activeHomework.value.childNote);
         });
 
+        const hasUnreadChildNote = computed(() => {
+          return !!(homeworkData.value && homeworkData.value.childNote);
+        });
+
+        // Bảng màu & Icon thẩm mỹ (Pastel Soft Tone)
         function getSubjectStyle(name) {
           const lower = (name || '').toLowerCase();
           if (lower.includes('toán') || lower.includes('math')) {
-            return { icon: 'fa-solid fa-calculator text-blue-600', badgeClass: 'bg-blue-100' };
+            return { icon: 'fa-solid fa-shapes text-sky-500', badgeClass: 'bg-sky-50 text-sky-600 border border-sky-100' };
           }
           if (lower.includes('việt') || lower.includes('văn') || lower.includes('chính tả') || lower.includes('tập đọc')) {
-            return { icon: 'fa-solid fa-book-open-reader text-emerald-600', badgeClass: 'bg-emerald-100' };
+            return { icon: 'fa-solid fa-book-sparkles text-emerald-500', badgeClass: 'bg-emerald-50 text-emerald-600 border border-emerald-100' };
           }
           if (lower.includes('anh') || lower.includes('english')) {
-            return { icon: 'fa-solid fa-earth-americas text-indigo-600', badgeClass: 'bg-indigo-100' };
+            return { icon: 'fa-solid fa-earth-americas text-indigo-500', badgeClass: 'bg-indigo-50 text-indigo-600 border border-indigo-100' };
           }
           if (lower.includes('khoa') || lower.includes('tự nhiên') || lower.includes('tnxh') || lower.includes('sử') || lower.includes('địa')) {
-            return { icon: 'fa-solid fa-flask text-amber-600', badgeClass: 'bg-amber-100' };
+            return { icon: 'fa-solid fa-leaf text-teal-500', badgeClass: 'bg-teal-50 text-teal-600 border border-teal-100' };
           }
           if (lower.includes('vẽ') || lower.includes('mỹ thuật') || lower.includes('nhạc') || lower.includes('tin')) {
-            return { icon: 'fa-solid fa-palette text-pink-600', badgeClass: 'bg-pink-100' };
+            return { icon: 'fa-solid fa-palette text-pink-500', badgeClass: 'bg-pink-50 text-pink-600 border border-pink-100' };
           }
-          return { icon: 'fa-solid fa-list-check text-purple-600', badgeClass: 'bg-purple-100' };
+          return { icon: 'fa-solid fa-star text-rose-500', badgeClass: 'bg-rose-50 text-rose-600 border border-rose-100' };
         }
 
         function playChimeSound() {
@@ -656,34 +576,35 @@
             const gain = ctx.createGain();
             osc.type = 'sine';
             osc.frequency.setValueAtTime(587.33, ctx.currentTime);
-            osc.frequency.setValueAtTime(880, ctx.currentTime + 0.09);
-            gain.gain.setValueAtTime(0.15, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+            osc.frequency.setValueAtTime(880, ctx.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.12, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
             osc.connect(gain);
             gain.connect(ctx.destination);
             osc.start();
-            osc.stop(ctx.currentTime + 0.5);
+            osc.stop(ctx.currentTime + 0.45);
           } catch(e) {}
         }
 
         function triggerConfetti() {
           if (typeof confetti === 'function') {
             confetti({
-              particleCount: 100,
-              spread: 70,
+              particleCount: 90,
+              spread: 65,
+              colors: ['#fb7185', '#a78bfa', '#38bdf8', '#34d399', '#fde047'],
               origin: { y: 0.6 }
             });
           }
         }
 
         function toggleTask(subjectIndex, taskIndex) {
-          const task = activeHomework.value.subjects[subjectIndex].tasks[taskIndex];
+          const task = homeworkData.value.subjects[subjectIndex].tasks[taskIndex];
           task.done = !task.done;
           
           if (task.done) {
             playChimeSound();
             if (currentProgress.value.percent === 100) {
-              setTimeout(triggerConfetti, 150);
+              setTimeout(triggerConfetti, 120);
             }
           }
           saveAndBroadcast('TASK_TOGGLE');
@@ -691,7 +612,7 @@
 
         function sendChildNote() {
           if (!newChildNote.value.trim()) return;
-          activeHomework.value.childNote = newChildNote.value.trim();
+          homeworkData.value.childNote = newChildNote.value.trim();
           newChildNote.value = '';
           saveAndBroadcast('CHILD_NOTE');
           alert('Đã gửi lời nhắn về cho Mẹ Giang rồi nhé!');
@@ -707,8 +628,8 @@
             { name: 'Toán', pattern: /^(toán|môn toán|đại số|hình học)/i },
             { name: 'Tiếng Việt', pattern: /^(tiếng việt|môn tv|chính tả|tập đọc|tập làm văn|ngữ văn|văn)/i },
             { name: 'Tiếng Anh', pattern: /^(tiếng anh|english|ta:|tiếng anh:)/i },
-            { name: 'Khoa học & Xã hội', pattern: /^(khoa học|tự nhiên xã hội|tnxh|lịch sử|địa lý|sử địa)/i },
-            { name: 'Hoạt động & Dặn dò', pattern: /^(dặn dò|chuẩn bị|lưu ý|nhắc nhở|tin học|mỹ thuật|âm nhạc|thể dục)/i }
+            { name: 'Khoa học & Tự nhiên', pattern: /^(khoa học|tự nhiên xã hội|tnxh|lịch sử|địa lý|sử địa)/i },
+            { name: 'Dặn dò & Chuẩn bị', pattern: /^(dặn dò|chuẩn bị|lưu ý|nhắc nhở|tin học|mỹ thuật|âm nhạc|thể dục)/i }
           ];
 
           lines.forEach(line => {
@@ -777,43 +698,37 @@
             });
           }
 
-          homeworkData.value[selectedChildId.value] = {
+          homeworkData.value = {
             date: new Date().toISOString().slice(0, 10),
             momNote: rawMomNote.value.trim(),
-            childNote: activeHomework.value.childNote || '',
+            childNote: homeworkData.value.childNote || '',
             subjects: parsedSubjects
           };
 
           saveAndBroadcast('HOMEWORK_POSTED');
-          alert(`Đã bóc tách và giao bài tập xong cho ${activeChild.value.name}!`);
+          alert('Đã bóc tách và giao bài tập xong cho Thùy Lâm!');
           rawZaloInput.value = '';
           currentView.value = 'student';
         }
 
         function fillSampleData() {
-          rawZaloInput.value = `BTVN ngày hôm nay:\n- Toán: Làm bài 1, 2, 3 trang 42 SGK; làm bài tập phân số trang 43\n- Tiếng Việt: Đọc thuộc lòng bài thơ 'Hạt gạo làng ta'; trả lời câu hỏi 1, 2\n- Tiếng Anh: Ôn tập từ vựng Unit 3; làm bài 1 workbook trang 18\n- Chuẩn bị: Mang giấy A4 và sáp màu cho giờ Mỹ thuật ngày mai.`;
+          rawZaloInput.value = `BTVN ngày hôm nay của Thùy Lâm:\n- Toán: Làm bài 1, 2, 3 trang 42 SGK; làm bài tập phân số trang 43\n- Tiếng Việt: Đọc thuộc lòng bài thơ 'Hạt gạo làng ta'; trả lời câu hỏi 1, 2\n- Tiếng Anh: Ôn tập từ vựng Unit 3; làm bài 1 workbook trang 18\n- Chuẩn bị: Mang giấy A4 và sáp màu cho giờ Mỹ thuật ngày mai.`;
         }
 
-        // LƯU TRỮ VÀ PHÁT TÍN HIỆU ĐỒNG BỘ ĐÁM MÂY (CLOUD REALTIME + LOCAL STORAGE)
         function saveAndBroadcast(actionType = 'UPDATE') {
-          // 1. Lưu Local
-          localStorage.setItem('kids_mission_board_data', JSON.stringify(homeworkData.value));
-          localStorage.setItem('kids_mission_board_children', JSON.stringify(children.value));
-          localStorage.setItem('kids_mission_board_sync_code', familySyncCode.value);
+          localStorage.setItem('thuylam_homework_data', JSON.stringify(homeworkData.value));
+          localStorage.setItem('thuylam_homework_sync_code', familySyncCode.value);
 
-          // 2. Broadcast qua các tab trình duyệt
           if (broadcastChannel) {
             broadcastChannel.postMessage({ type: 'DATA_UPDATED' });
           }
 
-          // 3. Đẩy lên Kênh Đám Mây Realtime (ntfy.sh)
           if (familySyncCode.value) {
             syncState.value = 'syncing';
             const payload = {
               type: actionType,
               timestamp: Date.now(),
-              homeworkData: homeworkData.value,
-              children: children.value
+              homeworkData: homeworkData.value
             };
             fetch(`https://ntfy.sh/${encodeURIComponent(familySyncCode.value)}`, {
               method: 'POST',
@@ -827,19 +742,14 @@
         }
 
         function loadData() {
-          const savedData = localStorage.getItem('kids_mission_board_data');
+          const savedData = localStorage.getItem('thuylam_homework_data');
           if (savedData) {
             try { homeworkData.value = JSON.parse(savedData); } catch(e) {}
           }
-          const savedChildren = localStorage.getItem('kids_mission_board_children');
-          if (savedChildren) {
-            try { children.value = JSON.parse(savedChildren); } catch(e) {}
-          }
-          const savedCode = localStorage.getItem('kids_mission_board_sync_code');
+          const savedCode = localStorage.getItem('thuylam_homework_sync_code');
           if (savedCode) familySyncCode.value = savedCode;
         }
 
-        // LẮNG NGHE ĐỒNG BỘ ĐÁM MÂY QUA SERVER-SENT EVENTS (SSE)
         function connectCloudRealtime() {
           if (!familySyncCode.value) return;
           
@@ -847,7 +757,7 @@
             try { sseConnection.close(); } catch(e) {}
           }
 
-          // Bước 1: Lấy tin nhắn mới nhất trong 24 giờ qua (đề phòng máy tính bật sau khi mẹ gửi)
+          // Lấy tin mới nhất trong 24 giờ qua
           fetch(`https://ntfy.sh/${encodeURIComponent(familySyncCode.value)}/json?poll=1&since=24h`)
             .then(res => res.text())
             .then(text => {
@@ -862,14 +772,12 @@
                   }
                 } catch(e) {}
               }
-              if (latestPayload) {
+              if (latestPayload && latestPayload.homeworkData) {
                 homeworkData.value = latestPayload.homeworkData;
-                if (latestPayload.children) children.value = latestPayload.children;
-                localStorage.setItem('kids_mission_board_data', JSON.stringify(homeworkData.value));
+                localStorage.setItem('thuylam_homework_data', JSON.stringify(homeworkData.value));
               }
             }).catch(() => {});
 
-          // Bước 2: Thiết lập kết nối thời gian thực lắng nghe push tức thì
           try {
             sseConnection = new EventSource(`https://ntfy.sh/${encodeURIComponent(familySyncCode.value)}/sse`);
             
@@ -884,10 +792,8 @@
                   const payload = JSON.parse(eventObj.message);
                   if (payload.homeworkData) {
                     homeworkData.value = payload.homeworkData;
-                    if (payload.children) children.value = payload.children;
-                    localStorage.setItem('kids_mission_board_data', JSON.stringify(homeworkData.value));
+                    localStorage.setItem('thuylam_homework_data', JSON.stringify(homeworkData.value));
                     
-                    // Nếu là mẹ vừa giao bài mới, phát âm thanh khích lệ cho con
                     if (payload.type === 'HOMEWORK_POSTED') {
                       playChimeSound();
                     }
@@ -907,23 +813,14 @@
         function reconnectCloud() {
           connectCloudRealtime();
           saveAndBroadcast('RECONNECT');
-          alert('Đã kết nối lại kênh đám mây gia đình!');
+          alert('Đã kết nối lại kênh đám mây!');
         }
 
         function resetToDefaultData() {
-          if (confirm('Bạn có chắc muốn đặt lại toàn bộ dữ liệu mẫu ban đầu?')) {
-            localStorage.clear();
+          if (confirm('Bạn có chắc muốn đặt lại dữ liệu mẫu ban đầu?')) {
+            localStorage.removeItem('thuylam_homework_data');
             location.reload();
           }
-        }
-
-        function saveSyncSettings() {
-          localStorage.setItem('kids_mission_board_sync_code', familySyncCode.value);
-          localStorage.setItem('kids_mission_board_children', JSON.stringify(children.value));
-          connectCloudRealtime();
-          saveAndBroadcast('UPDATE_PROFILE');
-          showSettingsModal.value = false;
-          alert('Đã lưu cấu hình gia đình thành công!');
         }
 
         onMounted(() => {
@@ -940,10 +837,7 @@
 
         return {
           currentView,
-          children,
-          selectedChildId,
-          activeChild,
-          activeHomework,
+          homeworkData,
           currentDateStr,
           currentProgress,
           momNotePresets,
@@ -954,13 +848,11 @@
           showSettingsModal,
           familySyncCode,
           syncState,
-          getChildProgress,
           getSubjectStyle,
           toggleTask,
           sendChildNote,
           parseAndSaveHomework,
           fillSampleData,
-          saveSyncSettings,
           reconnectCloud,
           resetToDefaultData
         };

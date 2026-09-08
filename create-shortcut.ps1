@@ -1,6 +1,11 @@
-# Tạo lối tắt ngoài Desktop kết nối thẳng tới trang web trực tuyến của con
+# Tạo lối tắt ngoài Desktop kết nối thẳng tới Góc Học Tập Của Thùy Lâm
 $desktop = [Environment]::GetFolderPath('Desktop')
-$shortcutPath = Join-Path $desktop "🌟 Góc Học Tập Của Con.url"
+
+# Xóa lối tắt cũ nếu có
+$oldShortcut = Join-Path $desktop "🌟 Góc Học Tập Của Con.url"
+if (Test-Path $oldShortcut) { Remove-Item $oldShortcut -Force }
+
+$shortcutPath = Join-Path $desktop "🌸 Góc Học Tập Của Thùy Lâm.url"
 $targetUrl = "https://giangcoi28122-art.github.io/kids-mission-board/?view=con"
 
 $content = @"
@@ -11,4 +16,4 @@ IconFile=C:\Windows\System32\shell32.dll
 "@
 
 Set-Content -Path $shortcutPath -Value $content -Encoding UTF8
-Write-Host "Đã cập nhật lối tắt ngoài Desktop trỏ về trang web trực tuyến: $targetUrl" -ForegroundColor Green
+Write-Host "Đã tạo lối tắt riêng cho Thùy Lâm ngoài Desktop: $shortcutPath" -ForegroundColor Green
